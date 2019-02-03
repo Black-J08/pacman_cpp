@@ -1,15 +1,32 @@
 #include <iostream>
 #include <conio.h>
 #include <stdlib>
+#include <stdio.h>
 #include "include/gotoxy.cpp"
 
 using namespace std;
 
 int main()
-{
-    int x = 35, y = 15;
+{	int x = 6, y = 4;
     char cursor;
     system("cls");
+	gotoxy(x, y++);
+	printf(" /$$$$$$$                           /$$      /$$                    \n");
+	gotoxy(x, y++);
+	printf("| $$__  $$                         | $$$    /$$$                    \n");
+	gotoxy(x, y++);
+	printf("| $$    $$ /$$$$$$   /$$$$$$$      | $$$$  /$$$$  /$$$$$$  /$$$$$$$ \n");
+	gotoxy(x, y++);
+	printf("| $$$$$$$/|____  $$ /$$_____/      | $$ $$/$$ $$ |____  $$| $$__  $$\n");
+	gotoxy(x, y++);
+	printf("| $$____/  /$$$$$$$| $$            | $$  $$$| $$  /$$$$$$$| $$    $$\n");
+	gotoxy(x, y++);
+	printf("| $$      /$$__  $$| $$            | $$   $ | $$ /$$__  $$| $$  | $$\n");
+	gotoxy(x, y++);
+	printf("| $$     |  $$$$$$$|  $$$$$$$      | $$  /  | $$|  $$$$$$$| $$  | $$\n");
+	gotoxy(x, y++);
+	printf("|__/       _______/  _______/      |__/     |__/  _______/|__/  |__/\n");
+    x = 35; y = 15;
     for (int i = 0; i < 6; ++i)
     {
         gotoxy(x, ++y);
