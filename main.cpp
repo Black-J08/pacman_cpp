@@ -10,6 +10,7 @@ int main()
 {	int x = 6, y = 4;
     char cursor;
     system("cls");
+	textcolor(6);
 	gotoxy(x, y++);
 	printf(" /$$$$$$$                           /$$      /$$                    \n");
 	gotoxy(x, y++);
@@ -27,6 +28,7 @@ int main()
 	gotoxy(x, y++);
 	printf("|__/       _______/  _______/      |__/     |__/  _______/|__/  |__/\n");
     x = 35; y = 15;
+    textcolor(3);
     for (int i = 0; i < 6; ++i)
     {
         gotoxy(x, ++y);
