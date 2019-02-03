@@ -2,6 +2,8 @@
 #include <conio.h>
 #include <stdlib>
 #include <stdio.h>
+#include <windows.h>
+#include "include/textcolor.cpp"
 #include "include/gotoxy.cpp"
 
 using namespace std;
