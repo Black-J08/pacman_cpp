@@ -1,2 +1,2 @@
 # pacman_cpp
-Pacman game build on C++
+Pacman game build on C++ [WIP]
