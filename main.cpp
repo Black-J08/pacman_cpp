@@ -1,6 +1,6 @@
 #include <iostream>
 #include <conio.h>
-#include <stdlib>
+#include <stdlib.h>
 #include <stdio.h>
 #include <windows.h>
 #include "include/textcolor.cpp"
@@ -85,7 +85,7 @@ int main()
     y = 15;
     gotoxy(x, ++y);
     cout << ">";
-    while (cursor != 13)
+    while (cursor != 13) //13 ASCII value of Enter Key
     {
         cursor = getch();
         switch (cursor)
