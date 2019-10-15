@@ -8,7 +8,8 @@
 
 using namespace std;
 
-void game();
+void print_map();
+void menu();
 
 int map[22][29] = {{201, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 203, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 187},
                    {186, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 186, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 186},
@@ -34,7 +35,29 @@ int map[22][29] = {{201, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 
                    {200, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 188}};
 
 int main()
-{	int x = 6, y = 4;
+{
+    menu();
+    getch();
+    return 0;
+}
+
+void print_map()
+{
+    char temp;
+    for (int y = 0; y < 22; y++)
+    {
+        for (int x = 0; x < 29; x++)
+        {
+            temp = map[y][x];
+            cout << temp;
+        }
+        cout << endl;
+    }
+}
+
+void menu()
+{
+    int x = 6, y = 4;
     char cursor;
     system("cls");
 	textcolor(6);
@@ -112,7 +135,7 @@ int main()
             cout << ">";
             break;
         case 27: //27 ASCII value of esc key
-            return 0;
+            exit(0);
         }
     }
     if (cursor == 13)
@@ -120,7 +143,8 @@ int main()
         {
         case 16:
             system("cls");
-            game(); //cout << "New Game WIP";
+            print_map(); 
+            cout << "New Game WIP";
             break;
         case 17:
             system("cls");
@@ -139,20 +163,4 @@ int main()
             cout << "About WIP";
             break;
         }
-    getch();
-    return 0;
-}
-
-void game()
-{
-    char temp;
-    for (int y = 0; y < 22; y++)
-    {
-        for (int x = 0; x < 29; x++)
-        {
-            temp = map[y][x];
-            cout << temp;
-        }
-        cout << endl;
-    }
 }
