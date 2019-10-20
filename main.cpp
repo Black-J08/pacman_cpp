@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <windows.h>
+#include "include/ShowConsoleCursor.cpp"
 #include "include/textcolor.cpp"
 #include "include/gotoxy.cpp"
 
@@ -40,6 +41,7 @@ int map[23][30] = {{32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 
 
 int main()
 {
+    ShowConsoleCursor(false);
     menu();
     getch();
     return 0;
@@ -185,19 +187,19 @@ void game()
         cout << " ";
         switch (a)
         {
-        case 119:
+        case 119:   //ASCII of w
             if (map[pacx][pacy - 1] == 32)
                 pacy--;
             break;
-        case 115:
+        case 115:   //ASCII of s
             if (map[pacx][pacy + 1] == 32)
                 pacy++;
             break;
-        case 97:
+        case 97:   //ASCII of a
             if (map[pacx - 1][pacy] == 32)
                 pacx--;
             break;
-        case 100:
+        case 100:   //ASCII of d
             if (map[pacx + 1][pacy] == 32)
                 pacx++;
             break;
