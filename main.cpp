@@ -6,6 +6,11 @@
 #include "include/ShowConsoleCursor.cpp"
 #include "include/textcolor.cpp"
 #include "include/gotoxy.cpp"
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 77
+#define KEY_RIGHT 75
+#define ESC 27
 
 using namespace std;
 
@@ -108,7 +113,7 @@ void menu()
         cursor = getch();
         switch (cursor)
         {
-        case 72: //72 ASCII value of up arrow key
+        case KEY_UP: //72 ASCII value of up arrow key
             gotoxy(x, y);
             cout << " ";
             gotoxy(x, --y);
@@ -118,7 +123,7 @@ void menu()
             cout << ">";
             break;
 
-        case 80: //80 ASCII value of down arrow key
+        case KEY_DOWN: //80 ASCII value of down arrow key
             gotoxy(x, y);
             cout << " ";
             gotoxy(x, ++y);
@@ -127,7 +132,7 @@ void menu()
             gotoxy(x, y);
             cout << ">";
             break;
-        case 27: //27 ASCII value of esc key
+        case ESC: //27 ASCII value of esc key
             exit(0);
         }
     }
@@ -175,35 +180,35 @@ void print_map()
 
 void game()
 {
-    int pacx = 15, pacy = 13, input;
-    char a;
+    int pacx = 15, pacy = 13;
+    char input;
     while (gameover != true)
     {
         gotoxy(pacx, pacy);
         cout << "<";
         //cout << map[pacx][pacy];
-        a = getch();
+        input = getch();
         gotoxy(pacx, pacy);
         cout << " ";
-        switch (a)
+        switch (input)
         {
-        case 72:   //ASCII of up arrow key
+        case KEY_UP:   //ASCII of up arrow key
             if (map[pacy - 1][pacx] == 32)
                 pacy--;
             break;
-        case 80:   //ASCII of down arrow key
+        case KEY_DOWN:   //ASCII of down arrow key
             if (map[pacy + 1][pacx] == 32)
                 pacy++;
             break;
-        case 75:   //ASCII of left arrow key
+        case KEY_RIGHT:   //ASCII of left arrow key
             if (map[pacy][pacx - 1] == 32)
                 pacx--;
             break;
-        case 77:   //ASCII of right arrow key
+        case KEY_LEFT:   //ASCII of right arrow key
             if (map[pacy][pacx + 1] == 32)
                 pacx++;
             break;
-        case 27:
+        case ESC:         //ASCII of Esc key
             exit(0);
             break;
         }
