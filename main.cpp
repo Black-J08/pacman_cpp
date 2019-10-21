@@ -188,19 +188,19 @@ void game()
         switch (a)
         {
         case 119:   //ASCII of w
-            if (map[pacx][pacy - 1] == 32)
+            if (map[pacy - 1][pacx] == 32)
                 pacy--;
             break;
         case 115:   //ASCII of s
-            if (map[pacx][pacy + 1] == 32)
+            if (map[pacy + 1][pacx] == 32)
                 pacy++;
             break;
         case 97:   //ASCII of a
-            if (map[pacx - 1][pacy] == 32)
+            if (map[pacy][pacx - 1] == 32)
                 pacx--;
             break;
         case 100:   //ASCII of d
-            if (map[pacx + 1][pacy] == 32)
+            if (map[pacy][pacx + 1] == 32)
                 pacx++;
             break;
         case 27:
