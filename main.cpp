@@ -187,19 +187,19 @@ void game()
         cout << " ";
         switch (a)
         {
-        case 119:   //ASCII of w
+        case 72:   //ASCII of up arrow key
             if (map[pacy - 1][pacx] == 32)
                 pacy--;
             break;
-        case 115:   //ASCII of s
+        case 80:   //ASCII of down arrow key
             if (map[pacy + 1][pacx] == 32)
                 pacy++;
             break;
-        case 97:   //ASCII of a
+        case 75:   //ASCII of left arrow key
             if (map[pacy][pacx - 1] == 32)
                 pacx--;
             break;
-        case 100:   //ASCII of d
+        case 77:   //ASCII of right arrow key
             if (map[pacy][pacx + 1] == 32)
                 pacx++;
             break;
