@@ -1,8 +1,7 @@
 #include <iostream>
-#include <conio.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <windows.h>
+#include <thread>
 #include "include/ShowConsoleCursor.cpp"
 #include "include/textcolor.cpp"
 #include "include/gotoxy.cpp"
@@ -14,11 +13,21 @@
 
 using namespace std;
 
-void print_map();
 void menu();
+void new_game();
+void print_map();
 void game();
+void game_input();
 
 bool gameover = false;
+enum direction
+{
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
+};
+direction dir = RIGHT;
 
 int map[23][30] = {{32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32},
                    {32, 201, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 203, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 187},
@@ -140,9 +149,7 @@ void menu()
         switch (y)
         {
         case 16:
-            system("cls");
-            print_map();
-            game();
+            new_game();
             //cout << "New Game WIP";
             break;
         case 17:
@@ -162,6 +169,17 @@ void menu()
             cout << "About WIP";
             break;
         }
+}
+
+void new_game()
+{
+    
+    system("cls");
+    print_map();
+    thread t1(game_input);
+    thread t2(game);
+    t1.join();
+    t2.join();
 }
 
 void print_map()
@@ -184,33 +202,58 @@ void game()
     char input;
     while (gameover != true)
     {
-        gotoxy(pacx, pacy);
-        cout << "<";
         //cout << map[pacx][pacy];
-        input = getch();
+        //input = getch();
         gotoxy(pacx, pacy);
         cout << " ";
-        switch (input)
+        switch (dir)
         {
-        case KEY_UP:   //ASCII of up arrow key
+        case UP: //ASCII of up arrow key
             if (map[pacy - 1][pacx] == 32)
                 pacy--;
             break;
-        case KEY_DOWN:   //ASCII of down arrow key
+        case DOWN: //ASCII of down arrow key
             if (map[pacy + 1][pacx] == 32)
                 pacy++;
             break;
-        case KEY_RIGHT:   //ASCII of left arrow key
+        case LEFT: //ASCII of left arrow key
             if (map[pacy][pacx - 1] == 32)
                 pacx--;
             break;
-        case KEY_LEFT:   //ASCII of right arrow key
+        case RIGHT: //ASCII of right arrow key
             if (map[pacy][pacx + 1] == 32)
                 pacx++;
+        }
+        gotoxy(pacx, pacy);
+        cout << "<";
+        Sleep(150);
+    }
+    return;
+}
+
+void game_input()
+{
+    char input;
+    while (input != ESC)
+    {
+         input = getch();
+        switch (input)
+        {
+        case KEY_UP:
+            dir = UP;
             break;
-        case ESC:         //ASCII of Esc key
-            exit(0);
+        case KEY_DOWN:
+            dir = DOWN;
             break;
+        case KEY_LEFT:
+            dir = RIGHT;
+            break;
+        case KEY_RIGHT:
+            dir = LEFT;
+            break;
+        case ESC:
+            gameover = true;
         }
     }
+    return;
 }
